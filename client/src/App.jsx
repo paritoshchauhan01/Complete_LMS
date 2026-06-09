@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { useAuth } from './contexts/AuthContext';
 
+import SelectFieldPage from './pages/SelectFieldPage';
 import DashboardLayout from './components/layout/DashboardLayout';
 import DashboardPage from './pages/DashboardPage';
 import CoursesPage from './pages/CoursesPage';
@@ -61,7 +62,7 @@ function App() {
         <Route path="/register/teacher/:token" element={<TeacherRegisterPage />} />
         <Route path="/unauthorized" element={<UnauthorizedPage />} />
         <Route path="/auth/callback" element={<AuthCallbackPage />} />
-
+        <Route path="/select-field" element={<SelectFieldPage />} />
         {/* Protected routes — inside DashboardLayout */}
         <Route
           path="/"

@@ -32,8 +32,14 @@ export default function AuthCallbackPage() {
           setStatus('Welcome, Teacher! Redirecting to your dashboard…');
           navigate('/dashboard');
         } else {
-          setStatus('Welcome! Redirecting…');
-          navigate('/dashboard');
+          // Student — if no courseField set, send to field selector first
+          if (!user?.courseField) {
+            setStatus('Almost there! Setting up your account…');
+            navigate('/select-field');
+          } else {
+            setStatus('Welcome! Redirecting…');
+            navigate('/dashboard');
+          }
         }
       })
       .catch(() => navigate('/login?error=auth_failed'));
