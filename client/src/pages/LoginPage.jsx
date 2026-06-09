@@ -1,5 +1,4 @@
-import { useEffect } from 'react';
-import { Link, useSearchParams } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
 import api from '../services/api';
 
 function GoogleIcon() {
@@ -30,7 +29,6 @@ export default function LoginPage() {
   const errorParam = searchParams.get('error');
 
   const handleGoogleLogin = async () => {
-    // Resolve the backend base URL first, then redirect
     const base = await api.getBaseURL?.() || (api.defaults?.baseURL?.replace('/api', '') || '');
     const backendUrl = base.endsWith('/api') ? base.replace('/api', '') : base;
     window.location.href = `${backendUrl}/api/auth/google`;
@@ -77,9 +75,12 @@ export default function LoginPage() {
 
           <p className="text-center text-sm text-gray-500 dark:text-gray-400">
             Teachers are added by admin invitation.{' '}
-            <Link to="/contact" className="text-indigo-600 dark:text-indigo-400 hover:underline">
+            <a
+              href="mailto:chauhan.paritosh01@gmail.com?subject=Teacher Access Request&body=Hello Admin, I would like to request teacher access to the LMS."
+              className="text-indigo-600 dark:text-indigo-400 hover:underline"
+            >
               Contact admin
-            </Link>
+            </a>
           </p>
         </div>
 
